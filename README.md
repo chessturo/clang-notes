@@ -3,10 +3,10 @@ This document is intended as a brief introduction to clang plugins.
 This work, unless otherwise specified, is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 ## Building
-This part of the guide is likely going to be what will go stale fastest, so checking an up-to-date book on clang for its build proceedures is probably the best place to start troubleshooting.
+This part of the guide is likely going to be what will go stale fastest, so checking an up-to-date book on clang for its build procedures is probably the best place to start troubleshooting.
 Personally, I found [this book](https://learning.oreilly.com/library/view/llvm-techniques-tips/9781838824952/) to be very helpful, and would recommend it as a starting point for further reading.
 This said, clang is built with cmake, so using cmake to build your plugin can make the process a lot easier.
-Since the clang repo itself is quite large, and I don't have any plans to contribute upsteam, I prefer to use an out-of-tree build.
+Since the clang repo itself is quite large, and I don't have any plans to contribute upstream, I prefer to use an out-of-tree build.
 To do this, once all the proper libraries are installed on your system, you can use a `CMakeLists.txt` with the following to expose the proper header files to your compiler:
 ```cmake
 find_package(LLVM REQUIRED CONFIG)
@@ -25,7 +25,7 @@ add_compile_options(-fno-rtti -fno-exceptions)
 ```
 
 Since clang plugins are dynamically loaded, the version of clang they're built against and the version of clang they're run with should match.
-Because the plugin API isn't stable, this can make updating/porting plugins a pretty significant maintainance overhead.
+Because the plugin API isn't stable, this can make updating/porting plugins a pretty significant maintenance overhead.
 
 ## Your First Plugin
 Fundamentally, a clang plugin is a class that inherits from `PluginASTAction`, which must eventually get registered with clang so that it's run. This looks like:
@@ -61,4 +61,3 @@ Consider this scenario: you're a TA for a computer science course teaching C tha
 Specifically, each call to `malloc` must look like `type_t *val = (type_t *)malloc(n * sizeof(*val))`.
 Grading this by hand is tedious and error prone, so you'd like clang to do it for you using its AST, emitting a diagnostic whenever a call to `malloc` that doesn't match this pattern is detected.
 This means we must construct an `ASTConsumer` that traverses the AST looking for calls to `malloc` that break our pattern.
-
