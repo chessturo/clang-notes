@@ -1,6 +1,6 @@
 # Clang Plugins Overview
 This document is intended as a brief introduction to clang plugins.
-This work, unless otherwise specified, is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+This document is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), the code portions of this repo (e.g., any `.cpp` or `CMakeLists.txt`) are licensed under the [MIT License](https://opensource.org/licenses/MIT)
 
 ## Building
 This part of the guide is likely going to be what will go stale fastest, so checking an up-to-date book on clang for its build procedures is probably the best place to start troubleshooting.
