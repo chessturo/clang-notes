@@ -70,7 +70,7 @@ public:
     // For our purposes we ignore command line arguments and return true no matter what.
     return true;
   }
-}
+};
 static FrontendPluginRegistry::Add<ExampleAction> X("example", "Performs your cool analysis");
 ```
 leaving out all the necessary `#include`s and `using namespace ...`es.
